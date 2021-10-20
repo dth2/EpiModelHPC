@@ -41,7 +41,7 @@ check_cp <- function(simno) {
   }
 
   fn <- list.files(path = dirname, pattern = "*.cp.rda", full.names = TRUE)
-  if (length(fn) < 10) {
+  if (length(fn) < 1) {
     badFile <- TRUE
   } else {
     badFile <- any(sapply(1:length(fn),
