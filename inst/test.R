@@ -2,10 +2,11 @@
 # testing no VARS passed to sbatch_master
 
 sbatch_master(vars = NULL,
+              working.dir = "inst/",
               master.file = "master.sh",
-              build.runsim = FALSE,
-              # param.sheet = "params.csv",
-              # param.tag = "Calibrate",
+              build.runsim = TRUE, 
+              param.file = "params.csv",
+              param.tag = "Calibrate",
               append = FALSE,
               simno.start = 100,
               ckpt = TRUE,

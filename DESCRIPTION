@@ -1,6 +1,6 @@
 Package: EpiModelHPC
-Version: 2.0.1
-Date: 2019-01-21
+Version: 2.1.1
+Date: 2020-05-18
 Title: EpiModel Extensions for High-Performance Computing
 Description: Extension package to EpiModel to run large-scale stochastic network
     models on modern high-performance computing systems. Functionality provided to
@@ -15,17 +15,18 @@ License: GPL-3
 URL: http://epimodel.org/
 BugReports: https://github.com/statnet/EpiModelHPC/issues
 Depends:
-    R (>= 3.2),
+    R (>= 3.5),
     EpiModel (>= 1.7.0)
 Imports:
     doParallel,
     foreach,
     ergm,
-    tergm
+    tergm,
+    stringr
 Suggests:
     rmarkdown,
     testthat,
     network
 VignetteBuilder: rmarkdown
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Encoding: UTF-8

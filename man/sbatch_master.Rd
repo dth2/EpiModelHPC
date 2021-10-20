@@ -4,16 +4,40 @@
 \alias{sbatch_master}
 \title{Create sbatch Bash Shell Script with Parameter Combination}
 \usage{
-sbatch_master(vars, master.file = "", runsim.file = "runsim.sh",
-  build.runsim = FALSE, env.file = "~/loadR.sh",
-  rscript.file = "sim.R", param.sheet, param.tag, simno.start,
-  nsims = 100, ncores = 16, ckpt = FALSE, append = FALSE,
-  mem = "55G", walltime = "1:00:00", jobname,
-  partition.main = "csde", partition.ckpt = "ckpt",
-  account.main = "csde", account.ckpt = "csde-ckpt")
+sbatch_master(
+  vars,
+  expand.vars = TRUE,
+  working.dir = "",
+  master.file = "",
+  runsim.file = "runsim.sh",
+  build.runsim = FALSE,
+  env.file = "~/loadR.sh",
+  rscript.file = "sim.R",
+  param.file = NULL,
+  param.tag = NULL,
+  simno.start,
+  nsims = 100,
+  ncores = 16,
+  narray = NULL,
+  ckpt = FALSE,
+  append = FALSE,
+  mem = "55G",
+  walltime = "1:00:00",
+  jobname,
+  partition.main = "csde",
+  partition.ckpt = "ckpt",
+  account.main = "csde",
+  account.ckpt = "csde-ckpt"
+)
 }
 \arguments{
 \item{vars}{A list of parameters with varying values (see examples below).}
+
+\item{expand.vars}{If \code{TRUE}, expand the grid on the individual vars, else
+the individual vars must be vectors of equal length.}
+
+\item{working.dir}{Path to write out the \code{master.file}, and if specified
+the \code{runsim.file} and \code{param.file}.}
 
 \item{master.file}{Name of the output bash shell script file to write. If 
 \code{""}, then will print to console.}
@@ -33,7 +57,7 @@ script below.}
 \item{rscript.file}{Name of the \code{.R} file that contains the primary 
 simulation to be executed by \code{Rscript}.}
 
-\item{param.sheet}{Name of a csv file to write out the list of varying 
+\item{param.file}{Name of a csv file to write out the list of varying 
 parameters and simulation numbers set within the function.}
 
 \item{param.tag}{Character string for current scenario batch added to 
@@ -46,6 +70,9 @@ and start numbering at one after the previous maximum.}
 \item{nsims}{Total number of simulations across all array jobs.}
 
 \item{ncores}{Number of cores per node to use within each Slurm job.}
+
+\item{narray}{Number of array batches within each Slurm job. If `NULL`, then
+will use `nsims/ncores` array batches.}
 
 \item{ckpt}{If \code{TRUE}, use the checkpoint queue to submit jobs. If
 numeric, will specify the first X jobs on the grid as non-backfill.}

@@ -4,7 +4,7 @@
 \alias{pull_env_vars}
 \title{Pull Standard Environmental Variables in Slurm Jobs}
 \usage{
-pull_env_vars(standard.vars = TRUE, num.vars, char.vars)
+pull_env_vars(standard.vars = TRUE, num.vars, char.vars, logic.vars)
 }
 \arguments{
 \item{standard.vars}{Pull and assign four standard Slurm variables: simno,
@@ -15,25 +15,32 @@ numeric in the global environment.}
 
 \item{char.vars}{Vector of environmental variables to pull and assign as
 character in the global environment.}
+
+\item{logic.vars}{Vector of environmental variables to pull and assign
+as logical in the global environment.}
 }
 \description{
 Pulls four environmental variables commonly used in Slurm jobs
              directly into the Global Environment of an R Script.
 }
 \examples{
-Sys.setenv("SIMNO"=1000)
+Sys.setenv("SIMNO"=23)
 Sys.setenv("SLURM_ARRAY_TASK_ID"=4)
-Sys.setenv("SLURM_NTASKS_PER_NODE"=4)
+Sys.setenv("SLURM_TASKS_PER_NODE"=4)
 Sys.setenv("NJOBS"=10)
 Sys.setenv("NSIMS"=100)
 
 pull_env_vars(standard.vars = TRUE)
+ls()
 
 Sys.setenv("tprob"=0.1)
 Sys.setenv("rrate"=14)
 Sys.setenv("scenario"="base")
+Sys.setenv("condition"=TRUE)
 
 pull_env_vars(num.vars = c("tprob", "rrate"),
-              char.vars = "scenario")
+              char.vars = "scenario",
+              logic.vars = "condition")
+ls()
 
 }

@@ -4,8 +4,8 @@
 #' \tabular{ll}{
 #'    Package: \tab EpiModelHPC\cr
 #'    Type: \tab Package\cr
-#'    Version: \tab 2.0.1\cr
-#'    Date: \tab 2019-01-21\cr
+#'    Version: \tab 2.1.1\cr
+#'    Date: \tab 2020-05-18\cr
 #'    License: \tab GPL-3\cr
 #'    LazyLoad: \tab yes\cr
 #' }
@@ -23,18 +23,6 @@
 #' framework for extending EpiModel to run on modern high-performance computing
 #' (HPC) systems.
 #'
-#' While there are many potential HPCs systems, this software is developed with
-#' the standard within large-scale scientific computing: linux-based clusters that
-#' operate job scheduling software like OpenPBS, or a commercial variation of it
-#' like Moab or TORQUE. This type of system, however, is not a necessity for
-#' running EpiModelHPC: the functionality of this package may be useful in any
-#' system that supports parallelization, including desktop computers with multiple
-#' cores.
-#'
-#' Further details of the software and its intended uses are provided in the
-#' main package vignette, along with help documentation for the individual
-#' package functions.
-#'
 #' @references The main website for EpiModel is at \url{http://epimodel.org/}.
 #'             The source code for this extension package is hosted on Github
 #'             at \url{http://github.com/statnet/EpiModelHPC}. Bug reports and
@@ -44,6 +32,7 @@
 #' @aliases EpiModelHPC
 #' @import EpiModel doParallel foreach ergm tergm
 #' @importFrom utils read.table read.csv write.csv
+#' @importFrom stringr str_pad
 #' @docType package
 #' @keywords package
 #'
